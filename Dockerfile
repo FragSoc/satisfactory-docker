@@ -34,6 +34,7 @@ RUN steamcmd \
         +login anonymous \
         +force_install_dir ${INSTALL_LOC} \
         +app_update ${APPID} ${STEAM_BETA} validate \
+        +app_update 1007 validate \
         +quit
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
