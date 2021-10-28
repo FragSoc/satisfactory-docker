@@ -21,10 +21,12 @@ USER root
 # Setup directory structure and permissions
 RUN groupadd -g ${GID} satisfactory && \
     useradd -m -s /bin/false -u ${UID} -g satisfactory satisfactory && \
-    mkdir -p ${GAME_CONFIG_LOC} ${CONFIG_LOC} ${INSTALL_LOC} ${SAVES_LOC} && \
+    mkdir -p ${GAME_CONFIG_LOC} ${CONFIG_LOC} ${INSTALL_LOC} \
+        ${SAVES_LOC} /home/satisfactory/.steam && \
     ln -s ${SAVES_LOC} ${GAME_CONFIG_LOC}/SaveGames && \
+    ln -s ${INSTALL_LOC}/linux64 /home/satisfactory/.steam && \
     chown -R satisfactory:satisfactory ${INSTALL_LOC} ${CONFIG_LOC} ${SAVES_LOC} \
-        /home/satisfactory/.config/Epic
+        /home/satisfactory/.config/Epic /home/satisfactory/.steam
 
 USER satisfactory
 ENV HOME="/home/satisfactory"
