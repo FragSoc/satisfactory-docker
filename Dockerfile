@@ -18,6 +18,9 @@ ENV GAME_CONFIG_LOC="/home/satisfactory/.config/Epic/FactoryGame/Saved"
 # Make our config and give it to the steam user
 USER root
 
+RUN apt update && \
+    apt install -y --no-install-recommends libsdl2-2.0-0
+
 # Setup directory structure and permissions
 RUN groupadd -g ${GID} satisfactory && \
     useradd -m -s /bin/false -u ${UID} -g satisfactory satisfactory && \
